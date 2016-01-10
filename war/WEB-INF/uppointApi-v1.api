@@ -1,0 +1,618 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://uppoint-api.appspot.com/_ah/api",
+  "name" : "uppointApi",
+  "version" : "v1",
+  "title" : "Uppoint API",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://uppoint-api.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "uppointApi.admin.insertCity" : {
+      "path" : "admin/countries/{parentKey}/cities",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertCity",
+      "request" : {
+        "parameters" : {
+          "parentKey" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.admin.insertCountry" : {
+      "path" : "admin/countries",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertCountry",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.admin.insertCategory" : {
+      "path" : "admin/categories",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertCategory",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.admin.insertProfession" : {
+      "path" : "admin/professions",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertProfession",
+      "request" : {
+        "parameters" : {
+          "parentKey" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.admin.insertServiceType" : {
+      "path" : "admin/serviceTypes",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertServiceType",
+      "request" : {
+        "parameters" : {
+          "parentKey" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.client.getSearchResults" : {
+      "path" : "client/search",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.client.ClientEndpoint.getSearchResults",
+      "request" : {
+        "parameters" : {
+          "countryKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "cityKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "professionKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "serviceTypeKey" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.users.getByEmail" : {
+      "path" : "users/{email}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.pro.ProUserEndpoint.getProUser",
+      "request" : {
+        "parameters" : {
+          "email" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.users.insert" : {
+      "path" : "users/{email}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.pro.ProUserEndpoint.insertProUser",
+      "request" : {
+        "parameters" : {
+          "email" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.users.sync" : {
+      "path" : "users/{proUserKey}/sync",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.sync.SyncEndpoint.updateUser",
+      "request" : {
+        "parameters" : {
+          "proUserKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "timestamp" : {
+            "type" : "string",
+            "required" : false
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CityPayload" : {
+        "id" : "CityPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "translation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LocalePair"
+            }
+          },
+          "countryKey" : {
+            "type" : "string"
+          }
+        }
+      },
+      "LocalePair" : {
+        "id" : "LocalePair",
+        "type" : "object",
+        "properties" : {
+          "locale" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CountryPayload" : {
+        "id" : "CountryPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "translation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LocalePair"
+            }
+          }
+        }
+      },
+      "CategoryPayload" : {
+        "id" : "CategoryPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "translation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LocalePair"
+            }
+          }
+        }
+      },
+      "ProfessionPayload" : {
+        "id" : "ProfessionPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "translation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LocalePair"
+            }
+          },
+          "categoryKey" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ServiceTypePayload" : {
+        "id" : "ServiceTypePayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "translation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LocalePair"
+            }
+          },
+          "professionKey" : {
+            "type" : "string"
+          }
+        }
+      },
+      "SearchResults" : {
+        "id" : "SearchResults",
+        "type" : "object",
+        "properties" : {
+          "results" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "SearchResult"
+            }
+          }
+        }
+      },
+      "SearchResult" : {
+        "id" : "SearchResult",
+        "type" : "object",
+        "properties" : {
+          "user" : {
+            "$ref" : "ProUserPayload"
+          }
+        }
+      },
+      "ProUserPayload" : {
+        "id" : "ProUserPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "professionKey" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "rating" : {
+            "type" : "number"
+          },
+          "phoneNumber" : {
+            "type" : "string"
+          },
+          "address" : {
+            "$ref" : "AddressPayload"
+          }
+        }
+      },
+      "AddressPayload" : {
+        "id" : "AddressPayload",
+        "type" : "object",
+        "properties" : {
+          "countryKey" : {
+            "type" : "string"
+          },
+          "cityKey" : {
+            "type" : "string"
+          },
+          "street" : {
+            "type" : "string"
+          },
+          "number" : {
+            "type" : "string"
+          },
+          "latitude" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "longitude" : {
+            "type" : "number",
+            "format" : "float"
+          }
+        }
+      },
+      "SyncPayload" : {
+        "id" : "SyncPayload",
+        "type" : "object",
+        "properties" : {
+          "lastSyncTimestamp" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "updatedCountries" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "CountryPayload"
+            }
+          },
+          "updatedCities" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "CityPayload"
+            }
+          },
+          "updatedCategories" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "CategoryPayload"
+            }
+          },
+          "updatedProfessions" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ProfessionPayload"
+            }
+          },
+          "updatedServiceTypes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ServiceTypePayload"
+            }
+          },
+          "profile" : {
+            "$ref" : "ProUserPayload"
+          },
+          "updatedServices" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "UserDefinedServicePayload"
+            }
+          },
+          "updatedEvents" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "EventPayload"
+            }
+          },
+          "deletedCountries" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "deletedCities" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "deletedCategories" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "deletedProfessions" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "deletedServiceTypes" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "deletedServices" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "deletedEvents" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "UserDefinedServicePayload" : {
+        "id" : "UserDefinedServicePayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "userKey" : {
+            "type" : "string"
+          },
+          "serviceTypeKey" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "duration" : {
+            "type" : "integer"
+          },
+          "price" : {
+            "type" : "number"
+          }
+        }
+      },
+      "EventPayload" : {
+        "id" : "EventPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "userKey" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "startTime" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "endTime" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.uppoint.admin.AdminEndpoint.insertCity" : {
+        "request" : {
+          "$ref" : "CityPayload"
+        },
+        "response" : {
+          "$ref" : "CityPayload"
+        }
+      },
+      "com.uppoint.admin.AdminEndpoint.insertCountry" : {
+        "request" : {
+          "$ref" : "CountryPayload"
+        },
+        "response" : {
+          "$ref" : "CountryPayload"
+        }
+      },
+      "com.uppoint.admin.AdminEndpoint.insertCategory" : {
+        "request" : {
+          "$ref" : "CategoryPayload"
+        },
+        "response" : {
+          "$ref" : "CategoryPayload"
+        }
+      },
+      "com.uppoint.admin.AdminEndpoint.insertProfession" : {
+        "request" : {
+          "$ref" : "ProfessionPayload"
+        },
+        "response" : {
+          "$ref" : "ProfessionPayload"
+        }
+      },
+      "com.uppoint.admin.AdminEndpoint.insertServiceType" : {
+        "request" : {
+          "$ref" : "ServiceTypePayload"
+        },
+        "response" : {
+          "$ref" : "ServiceTypePayload"
+        }
+      },
+      "com.uppoint.client.ClientEndpoint.getSearchResults" : {
+        "response" : {
+          "$ref" : "SearchResults"
+        }
+      },
+      "com.uppoint.pro.ProUserEndpoint.getProUser" : {
+        "response" : {
+          "$ref" : "ProUserPayload"
+        }
+      },
+      "com.uppoint.pro.ProUserEndpoint.insertProUser" : {
+        "response" : {
+          "$ref" : "ProUserPayload"
+        }
+      },
+      "com.uppoint.sync.SyncEndpoint.updateUser" : {
+        "request" : {
+          "$ref" : "SyncPayload"
+        },
+        "response" : {
+          "$ref" : "SyncPayload"
+        }
+      }
+    }
+  }
+}
