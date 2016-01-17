@@ -6,7 +6,6 @@
   "version" : "v1",
   "title" : "Uppoint API",
   "defaultVersion" : false,
-  "discovery" : [ "PUBLIC" ],
   "adapter" : {
     "bns" : "https://uppoint-api.appspot.com/_ah/spi",
     "deadline" : 65.0,
@@ -26,6 +25,28 @@
     "maxAge" : 0
   },
   "methods" : {
+    "uppointApi.admin.insertProfession" : {
+      "path" : "admin/professions",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertProfession",
+      "request" : {
+        "parameters" : {
+          "parentKey" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "uppointApi.admin.insertCity" : {
       "path" : "admin/countries/{parentKey}/cities",
       "httpMethod" : "POST",
@@ -41,22 +62,6 @@
             "required" : true
           }
         },
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "uppointApi.admin.insertCountry" : {
-      "path" : "admin/countries",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertCountry",
-      "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
       },
@@ -80,28 +85,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "uppointApi.admin.insertProfession" : {
-      "path" : "admin/professions",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertProfession",
-      "request" : {
-        "parameters" : {
-          "parentKey" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "uppointApi.admin.insertServiceType" : {
       "path" : "admin/serviceTypes",
       "httpMethod" : "POST",
@@ -117,6 +100,22 @@
             "required" : true
           }
         },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "uppointApi.admin.insertCountry" : {
+      "path" : "admin/countries",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertCountry",
+      "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
       },
@@ -228,66 +227,6 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CityPayload" : {
-        "id" : "CityPayload",
-        "type" : "object",
-        "properties" : {
-          "key" : {
-            "type" : "string"
-          },
-          "translation" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "LocalePair"
-            }
-          },
-          "countryKey" : {
-            "type" : "string"
-          }
-        }
-      },
-      "LocalePair" : {
-        "id" : "LocalePair",
-        "type" : "object",
-        "properties" : {
-          "locale" : {
-            "type" : "string"
-          },
-          "value" : {
-            "type" : "string"
-          }
-        }
-      },
-      "CountryPayload" : {
-        "id" : "CountryPayload",
-        "type" : "object",
-        "properties" : {
-          "key" : {
-            "type" : "string"
-          },
-          "translation" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "LocalePair"
-            }
-          }
-        }
-      },
-      "CategoryPayload" : {
-        "id" : "CategoryPayload",
-        "type" : "object",
-        "properties" : {
-          "key" : {
-            "type" : "string"
-          },
-          "translation" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "LocalePair"
-            }
-          }
-        }
-      },
       "ProfessionPayload" : {
         "id" : "ProfessionPayload",
         "type" : "object",
@@ -306,6 +245,51 @@
           }
         }
       },
+      "LocalePair" : {
+        "id" : "LocalePair",
+        "type" : "object",
+        "properties" : {
+          "locale" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CityPayload" : {
+        "id" : "CityPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "translation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LocalePair"
+            }
+          },
+          "countryKey" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CategoryPayload" : {
+        "id" : "CategoryPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "translation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LocalePair"
+            }
+          }
+        }
+      },
       "ServiceTypePayload" : {
         "id" : "ServiceTypePayload",
         "type" : "object",
@@ -321,6 +305,21 @@
           },
           "professionKey" : {
             "type" : "string"
+          }
+        }
+      },
+      "CountryPayload" : {
+        "id" : "CountryPayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "translation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LocalePair"
+            }
           }
         }
       },
@@ -550,20 +549,20 @@
       }
     },
     "methods" : {
+      "com.uppoint.admin.AdminEndpoint.insertProfession" : {
+        "request" : {
+          "$ref" : "ProfessionPayload"
+        },
+        "response" : {
+          "$ref" : "ProfessionPayload"
+        }
+      },
       "com.uppoint.admin.AdminEndpoint.insertCity" : {
         "request" : {
           "$ref" : "CityPayload"
         },
         "response" : {
           "$ref" : "CityPayload"
-        }
-      },
-      "com.uppoint.admin.AdminEndpoint.insertCountry" : {
-        "request" : {
-          "$ref" : "CountryPayload"
-        },
-        "response" : {
-          "$ref" : "CountryPayload"
         }
       },
       "com.uppoint.admin.AdminEndpoint.insertCategory" : {
@@ -574,20 +573,20 @@
           "$ref" : "CategoryPayload"
         }
       },
-      "com.uppoint.admin.AdminEndpoint.insertProfession" : {
-        "request" : {
-          "$ref" : "ProfessionPayload"
-        },
-        "response" : {
-          "$ref" : "ProfessionPayload"
-        }
-      },
       "com.uppoint.admin.AdminEndpoint.insertServiceType" : {
         "request" : {
           "$ref" : "ServiceTypePayload"
         },
         "response" : {
           "$ref" : "ServiceTypePayload"
+        }
+      },
+      "com.uppoint.admin.AdminEndpoint.insertCountry" : {
+        "request" : {
+          "$ref" : "CountryPayload"
+        },
+        "response" : {
+          "$ref" : "CountryPayload"
         }
       },
       "com.uppoint.client.ClientEndpoint.getSearchResults" : {
