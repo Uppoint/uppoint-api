@@ -7,7 +7,6 @@ tmp/
 *.swp
 *~.nib
 local.properties
-.settings/
 .loadpath
 
 # External tool builders
@@ -18,9 +17,6 @@ local.properties
 
 # CDT-specific
 .cproject
-
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
 
 # Java annotation processor (APT)
 .factorypath
@@ -39,6 +35,7 @@ local.properties
 
 # Google App Engine generated folder
 appengine-generated/
+war/WEB-INFO/classes
 
 # OS X specific
 .DS_Store
