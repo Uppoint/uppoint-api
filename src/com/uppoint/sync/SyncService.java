@@ -254,9 +254,13 @@ public class SyncService {
 	private boolean canPut(Event event) {
 		final List<Query.Filter> subFilters = new LinkedList<>();
 		Collections.addAll(subFilters,
-				new Query.FilterPredicate("startTime", FilterOperator.LESS_THAN_OR_EQUAL, event.getStartTime()),
-				new Query.FilterPredicate("endTime", FilterOperator.GREATER_THAN_OR_EQUAL, event.getEndTime()));
-		final Query.CompositeFilter filter = new Query.CompositeFilter(CompositeFilterOperator.AND, subFilters);
+				new Query.CompositeFilter(CompositeFilterOperator.AND, Arrays.asList(
+						new Query.FilterPredicate("startTime", FilterOperator.LESS_THAN_OR_EQUAL, event.getStartTime()),
+						new Query.FilterPredicate("endTime", FilterOperator.GREATER_THAN_OR_EQUAL, event.getStartTime()))),
+				new Query.CompositeFilter(CompositeFilterOperator.AND, Arrays.asList(
+						new Query.FilterPredicate("startTime", FilterOperator.LESS_THAN_OR_EQUAL, event.getEndTime()),
+						new Query.FilterPredicate("endTime", FilterOperator.GREATER_THAN_OR_EQUAL, event.getEndTime()))));
+		final Query.CompositeFilter filter = new Query.CompositeFilter(CompositeFilterOperator.OR, subFilters);
 		final Query query = new Query(Event.class.getSimpleName()).setFilter(filter).setKeysOnly();
 		final PreparedQuery preparedQuery = this.datastore.prepare(query);
 		final int overlappingEvents = preparedQuery.countEntities(FetchOptions.Builder.withDefaults());
