@@ -19,13 +19,14 @@ public class ClientEndpoint extends BaseEndpoint {
 	@ApiMethod(path = "client/search", name = "client.getSearchResults")
 	public SearchResults getSearchResults(@Named("countryKey") String countryKeyString,
 			@Named("cityKey") String cityKeyString, @Named("professionKey") String professionKeyString,
-			@Named("serviceTypeKey") String serviceTypeKeyString, User user) throws OAuthRequestException {
+			@Named("serviceTypeKey") String serviceTypeKeyString,
+			@Named("start") long start, @Named("end") long end, User user) throws OAuthRequestException {
 		if (user == null) {
 			throw new OAuthRequestException("Authentication required");
 		}
 
 		return this.searchService.search(KeyFactory.stringToKey(countryKeyString),
 				KeyFactory.stringToKey(cityKeyString), KeyFactory.stringToKey(professionKeyString),
-				KeyFactory.stringToKey(serviceTypeKeyString));
+				KeyFactory.stringToKey(serviceTypeKeyString), start, end);
 	}
 }

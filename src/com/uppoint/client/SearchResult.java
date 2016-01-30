@@ -9,6 +9,7 @@ class SearchResult {
 
 	private ProUser user;
 	private List<UserDefinedService> services;
+	private List<TimeFrame> occupiedFrames;
 
 	public ProUser getUser() {
 		return user;
@@ -24,6 +25,14 @@ class SearchResult {
 
 	public void setServices(List<UserDefinedService> services) {
 		this.services = services;
+	}
+
+	public List<TimeFrame> getOccupiedFrames() {
+		return occupiedFrames;
+	}
+
+	public void setOccupiedFrames(List<TimeFrame> occupiedFrames) {
+		this.occupiedFrames = occupiedFrames;
 	}
 
 }
