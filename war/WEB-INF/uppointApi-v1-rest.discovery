@@ -1,0 +1,668 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/mypEh0pTxlBXEWNOTJyYiGqMEbM\"",
+ "discoveryVersion": "v1",
+ "id": "uppointApi:v1",
+ "name": "uppointApi",
+ "version": "v1",
+ "title": "Uppoint API",
+ "description": "This is an API",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://uppoint-api.appspot.com/_ah/api/uppointApi/v1/",
+ "basePath": "/_ah/api/uppointApi/v1/",
+ "rootUrl": "https://uppoint-api.appspot.com/_ah/api/",
+ "servicePath": "uppointApi/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "AddressPayload": {
+   "id": "AddressPayload",
+   "type": "object",
+   "properties": {
+    "cityKey": {
+     "type": "string"
+    },
+    "countryKey": {
+     "type": "string"
+    },
+    "latitude": {
+     "type": "number",
+     "format": "float"
+    },
+    "longitude": {
+     "type": "number",
+     "format": "float"
+    },
+    "number": {
+     "type": "string"
+    },
+    "street": {
+     "type": "string"
+    }
+   }
+  },
+  "CategoryPayload": {
+   "id": "CategoryPayload",
+   "type": "object",
+   "properties": {
+    "key": {
+     "type": "string"
+    },
+    "translation": {
+     "type": "array",
+     "items": {
+      "$ref": "LocalePair"
+     }
+    }
+   }
+  },
+  "CityPayload": {
+   "id": "CityPayload",
+   "type": "object",
+   "properties": {
+    "countryKey": {
+     "type": "string"
+    },
+    "key": {
+     "type": "string"
+    },
+    "translation": {
+     "type": "array",
+     "items": {
+      "$ref": "LocalePair"
+     }
+    }
+   }
+  },
+  "CountryPayload": {
+   "id": "CountryPayload",
+   "type": "object",
+   "properties": {
+    "key": {
+     "type": "string"
+    },
+    "translation": {
+     "type": "array",
+     "items": {
+      "$ref": "LocalePair"
+     }
+    }
+   }
+  },
+  "EventPayload": {
+   "id": "EventPayload",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "endTime": {
+     "type": "string",
+     "format": "int64"
+    },
+    "key": {
+     "type": "string"
+    },
+    "startTime": {
+     "type": "string",
+     "format": "int64"
+    },
+    "title": {
+     "type": "string"
+    },
+    "userKey": {
+     "type": "string"
+    }
+   }
+  },
+  "LocalePair": {
+   "id": "LocalePair",
+   "type": "object",
+   "properties": {
+    "locale": {
+     "type": "string"
+    },
+    "value": {
+     "type": "string"
+    }
+   }
+  },
+  "ProUserPayload": {
+   "id": "ProUserPayload",
+   "type": "object",
+   "properties": {
+    "address": {
+     "$ref": "AddressPayload"
+    },
+    "email": {
+     "type": "string"
+    },
+    "key": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "phoneNumber": {
+     "type": "string"
+    },
+    "professionKey": {
+     "type": "string"
+    },
+    "rating": {
+     "type": "number",
+     "format": "double"
+    }
+   }
+  },
+  "ProfessionPayload": {
+   "id": "ProfessionPayload",
+   "type": "object",
+   "properties": {
+    "categoryKey": {
+     "type": "string"
+    },
+    "key": {
+     "type": "string"
+    },
+    "translation": {
+     "type": "array",
+     "items": {
+      "$ref": "LocalePair"
+     }
+    }
+   }
+  },
+  "SearchResult": {
+   "id": "SearchResult",
+   "type": "object",
+   "properties": {
+    "occupiedFrames": {
+     "type": "array",
+     "items": {
+      "$ref": "TimeFrame"
+     }
+    },
+    "services": {
+     "type": "array",
+     "items": {
+      "$ref": "UserDefinedServicePayload"
+     }
+    },
+    "user": {
+     "$ref": "ProUserPayload"
+    }
+   }
+  },
+  "SearchResults": {
+   "id": "SearchResults",
+   "type": "object",
+   "properties": {
+    "results": {
+     "type": "array",
+     "items": {
+      "$ref": "SearchResult"
+     }
+    }
+   }
+  },
+  "ServiceTypePayload": {
+   "id": "ServiceTypePayload",
+   "type": "object",
+   "properties": {
+    "key": {
+     "type": "string"
+    },
+    "professionKey": {
+     "type": "string"
+    },
+    "translation": {
+     "type": "array",
+     "items": {
+      "$ref": "LocalePair"
+     }
+    }
+   }
+  },
+  "SyncPayload": {
+   "id": "SyncPayload",
+   "type": "object",
+   "properties": {
+    "deletedCategories": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "deletedCities": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "deletedCountries": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "deletedEvents": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "deletedProfessions": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "deletedServiceTypes": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "deletedServices": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "lastSyncTimestamp": {
+     "type": "string",
+     "format": "int64"
+    },
+    "profile": {
+     "$ref": "ProUserPayload"
+    },
+    "updatedCategories": {
+     "type": "array",
+     "items": {
+      "$ref": "CategoryPayload"
+     }
+    },
+    "updatedCities": {
+     "type": "array",
+     "items": {
+      "$ref": "CityPayload"
+     }
+    },
+    "updatedCountries": {
+     "type": "array",
+     "items": {
+      "$ref": "CountryPayload"
+     }
+    },
+    "updatedEvents": {
+     "type": "array",
+     "items": {
+      "$ref": "EventPayload"
+     }
+    },
+    "updatedProfessions": {
+     "type": "array",
+     "items": {
+      "$ref": "ProfessionPayload"
+     }
+    },
+    "updatedServiceTypes": {
+     "type": "array",
+     "items": {
+      "$ref": "ServiceTypePayload"
+     }
+    },
+    "updatedServices": {
+     "type": "array",
+     "items": {
+      "$ref": "UserDefinedServicePayload"
+     }
+    }
+   }
+  },
+  "TimeFrame": {
+   "id": "TimeFrame",
+   "type": "object",
+   "properties": {
+    "end": {
+     "type": "string",
+     "format": "int64"
+    },
+    "start": {
+     "type": "string",
+     "format": "int64"
+    }
+   }
+  },
+  "UserDefinedServicePayload": {
+   "id": "UserDefinedServicePayload",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "duration": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "key": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "price": {
+     "type": "number",
+     "format": "double"
+    },
+    "serviceTypeKey": {
+     "type": "string"
+    },
+    "userKey": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "resources": {
+  "admin": {
+   "methods": {
+    "insertCategory": {
+     "id": "uppointApi.admin.insertCategory",
+     "path": "admin/categories",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "CategoryPayload",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "CategoryPayload"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "insertCity": {
+     "id": "uppointApi.admin.insertCity",
+     "path": "admin/countries/{parentKey}/cities",
+     "httpMethod": "POST",
+     "parameters": {
+      "parentKey": {
+       "type": "string",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "parentKey"
+     ],
+     "request": {
+      "$ref": "CityPayload",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "CityPayload"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "insertCountry": {
+     "id": "uppointApi.admin.insertCountry",
+     "path": "admin/countries",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "CountryPayload",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "CountryPayload"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "insertProfession": {
+     "id": "uppointApi.admin.insertProfession",
+     "path": "admin/professions",
+     "httpMethod": "POST",
+     "parameters": {
+      "parentKey": {
+       "type": "string",
+       "required": true,
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "parentKey"
+     ],
+     "request": {
+      "$ref": "ProfessionPayload",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "ProfessionPayload"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "insertServiceType": {
+     "id": "uppointApi.admin.insertServiceType",
+     "path": "admin/serviceTypes",
+     "httpMethod": "POST",
+     "parameters": {
+      "parentKey": {
+       "type": "string",
+       "required": true,
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "parentKey"
+     ],
+     "request": {
+      "$ref": "ServiceTypePayload",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "ServiceTypePayload"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    }
+   }
+  },
+  "client": {
+   "methods": {
+    "getSearchResults": {
+     "id": "uppointApi.client.getSearchResults",
+     "path": "client/search",
+     "httpMethod": "GET",
+     "parameters": {
+      "cityKey": {
+       "type": "string",
+       "required": true,
+       "location": "query"
+      },
+      "countryKey": {
+       "type": "string",
+       "required": true,
+       "location": "query"
+      },
+      "end": {
+       "type": "string",
+       "required": true,
+       "format": "int64",
+       "location": "query"
+      },
+      "professionKey": {
+       "type": "string",
+       "required": true,
+       "location": "query"
+      },
+      "serviceTypeKey": {
+       "type": "string",
+       "required": true,
+       "location": "query"
+      },
+      "start": {
+       "type": "string",
+       "required": true,
+       "format": "int64",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "cityKey",
+      "countryKey",
+      "end",
+      "professionKey",
+      "serviceTypeKey",
+      "start"
+     ],
+     "response": {
+      "$ref": "SearchResults"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    }
+   }
+  },
+  "users": {
+   "methods": {
+    "getByEmail": {
+     "id": "uppointApi.users.getByEmail",
+     "path": "users/{email}",
+     "httpMethod": "GET",
+     "parameters": {
+      "email": {
+       "type": "string",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "email"
+     ],
+     "response": {
+      "$ref": "ProUserPayload"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "insert": {
+     "id": "uppointApi.users.insert",
+     "path": "users/{email}",
+     "httpMethod": "POST",
+     "parameters": {
+      "email": {
+       "type": "string",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "email"
+     ],
+     "response": {
+      "$ref": "ProUserPayload"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "sync": {
+     "id": "uppointApi.users.sync",
+     "path": "users/{proUserKey}/sync",
+     "httpMethod": "PUT",
+     "parameters": {
+      "proUserKey": {
+       "type": "string",
+       "required": true,
+       "location": "path"
+      },
+      "timestamp": {
+       "type": "string",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "proUserKey"
+     ],
+     "request": {
+      "$ref": "SyncPayload",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "SyncPayload"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    }
+   }
+  }
+ }
+}
