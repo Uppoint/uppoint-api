@@ -1,6 +1,6 @@
 package com.uppoint.client;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -86,13 +86,16 @@ class SearchService {
 	}
 
 	private List<TimeFrame> fetchOccupiedFrames(Entity userEntity, long start, long end) {
+		final List<Filter> subfilters = new LinkedList<>();
+		Collections.addAll(subfilters, new Query.FilterPredicate("startTime", FilterOperator.GREATER_THAN, start - 1),
+				new Query.FilterPredicate("endTime", FilterOperator.LESS_THAN, end + 1));
+
 		final Query query = new Query(Event.class.getSimpleName(), userEntity.getKey())
 				.addProjection(new PropertyProjection("startTime", Long.class))
 				.addProjection(new PropertyProjection("endTime", Long.class))
-				.setFilter(new Query.CompositeFilter(CompositeFilterOperator.AND,
-						Arrays.asList(new Query.FilterPredicate("startTime", FilterOperator.GREATER_THAN, start - 1),
-								new Query.FilterPredicate("endTime", FilterOperator.LESS_THAN, end + 1))))
+				.setFilter(new Query.CompositeFilter(CompositeFilterOperator.AND, subfilters))
 				.addSort("startTime");
+
 		final Iterator<Entity> eventIter = this.datastore.prepare(query).asIterator();
 		final List<TimeFrame> occupiedFrames = new LinkedList<>();
 		while (eventIter.hasNext()) {
