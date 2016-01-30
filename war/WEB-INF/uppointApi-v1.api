@@ -25,14 +25,14 @@
     "maxAge" : 0
   },
   "methods" : {
-    "uppointApi.admin.insertProfession" : {
-      "path" : "admin/professions",
+    "uppointApi.admin.insertServiceType" : {
+      "path" : "admin/serviceTypes",
       "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertProfession",
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertServiceType",
       "request" : {
         "parameters" : {
           "parentKey" : {
@@ -85,14 +85,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "uppointApi.admin.insertServiceType" : {
-      "path" : "admin/serviceTypes",
+    "uppointApi.admin.insertProfession" : {
+      "path" : "admin/professions",
       "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "55945210201-njqenms4v43b16d3pdatkntknra8d0h4.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertServiceType",
+      "rosyMethod" : "com.uppoint.admin.AdminEndpoint.insertProfession",
       "request" : {
         "parameters" : {
           "parentKey" : {
@@ -147,6 +147,14 @@
           },
           "serviceTypeKey" : {
             "type" : "string",
+            "required" : true
+          },
+          "start" : {
+            "type" : "int64",
+            "required" : true
+          },
+          "end" : {
+            "type" : "int64",
             "required" : true
           }
         },
@@ -227,8 +235,8 @@
   },
   "descriptor" : {
     "schemas" : {
-      "ProfessionPayload" : {
-        "id" : "ProfessionPayload",
+      "ServiceTypePayload" : {
+        "id" : "ServiceTypePayload",
         "type" : "object",
         "properties" : {
           "key" : {
@@ -240,7 +248,7 @@
               "$ref" : "LocalePair"
             }
           },
-          "categoryKey" : {
+          "professionKey" : {
             "type" : "string"
           }
         }
@@ -290,8 +298,8 @@
           }
         }
       },
-      "ServiceTypePayload" : {
-        "id" : "ServiceTypePayload",
+      "ProfessionPayload" : {
+        "id" : "ProfessionPayload",
         "type" : "object",
         "properties" : {
           "key" : {
@@ -303,7 +311,7 @@
               "$ref" : "LocalePair"
             }
           },
-          "professionKey" : {
+          "categoryKey" : {
             "type" : "string"
           }
         }
@@ -341,6 +349,18 @@
         "properties" : {
           "user" : {
             "$ref" : "ProUserPayload"
+          },
+          "services" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "UserDefinedServicePayload"
+            }
+          },
+          "occupiedFrames" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "TimeFrame"
+            }
           }
         }
       },
@@ -394,6 +414,47 @@
           "longitude" : {
             "type" : "number",
             "format" : "float"
+          }
+        }
+      },
+      "UserDefinedServicePayload" : {
+        "id" : "UserDefinedServicePayload",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "userKey" : {
+            "type" : "string"
+          },
+          "serviceTypeKey" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "duration" : {
+            "type" : "integer"
+          },
+          "price" : {
+            "type" : "number"
+          }
+        }
+      },
+      "TimeFrame" : {
+        "id" : "TimeFrame",
+        "type" : "object",
+        "properties" : {
+          "start" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "end" : {
+            "type" : "string",
+            "format" : "int64"
           }
         }
       },
@@ -494,33 +555,6 @@
           }
         }
       },
-      "UserDefinedServicePayload" : {
-        "id" : "UserDefinedServicePayload",
-        "type" : "object",
-        "properties" : {
-          "key" : {
-            "type" : "string"
-          },
-          "userKey" : {
-            "type" : "string"
-          },
-          "serviceTypeKey" : {
-            "type" : "string"
-          },
-          "name" : {
-            "type" : "string"
-          },
-          "description" : {
-            "type" : "string"
-          },
-          "duration" : {
-            "type" : "integer"
-          },
-          "price" : {
-            "type" : "number"
-          }
-        }
-      },
       "EventPayload" : {
         "id" : "EventPayload",
         "type" : "object",
@@ -549,12 +583,12 @@
       }
     },
     "methods" : {
-      "com.uppoint.admin.AdminEndpoint.insertProfession" : {
+      "com.uppoint.admin.AdminEndpoint.insertServiceType" : {
         "request" : {
-          "$ref" : "ProfessionPayload"
+          "$ref" : "ServiceTypePayload"
         },
         "response" : {
-          "$ref" : "ProfessionPayload"
+          "$ref" : "ServiceTypePayload"
         }
       },
       "com.uppoint.admin.AdminEndpoint.insertCity" : {
@@ -573,12 +607,12 @@
           "$ref" : "CategoryPayload"
         }
       },
-      "com.uppoint.admin.AdminEndpoint.insertServiceType" : {
+      "com.uppoint.admin.AdminEndpoint.insertProfession" : {
         "request" : {
-          "$ref" : "ServiceTypePayload"
+          "$ref" : "ProfessionPayload"
         },
         "response" : {
-          "$ref" : "ServiceTypePayload"
+          "$ref" : "ProfessionPayload"
         }
       },
       "com.uppoint.admin.AdminEndpoint.insertCountry" : {
