@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/uppointApi/v1/20160130133845/java/1.18.0-rc/uppoint_api_appspot_com-uppointApi-v1-20160130133845-java-1.18.0-rc-sources.jar", 
-      "path": "uppoint_api_appspot_com-uppointApi-v1-20160130133845-java-1.18.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/uppointApi/v1/20160228152020/java/1.18.0-rc/uppoint_api_appspot_com-uppointApi-v1-20160228152020-java-1.18.0-rc-sources.jar", 
+      "path": "uppoint_api_appspot_com-uppointApi-v1-20160228152020-java-1.18.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2016-01-30 13:38"
+      "timestamp": "2016-02-28 15:20"
     }, 
     {
-      "path": "uppoint_api_appspot_com-uppointApi-v1-20160130133845-java-1.18.0-rc.jar.properties", 
+      "path": "uppoint_api_appspot_com-uppointApi-v1-20160228152020-java-1.18.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -674,5 +674,5 @@
   "version": "v1", 
   "language_version": "1.18.0-rc", 
   "id": "uppointApi:v1", 
-  "revision": 20160130133845
+  "revision": 20160228152020
 }

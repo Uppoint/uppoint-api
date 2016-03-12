@@ -68,8 +68,9 @@ public class SyncService {
 	}
 
 	public SyncPayload sync(Key userKey, SyncPayload syncPayload, long timestamp) {
+		final SyncPayload payload = fetchLocalChanges(userKey, timestamp);
 		applyRemoteChanges(userKey, syncPayload);
-		return fetchLocalChanges(userKey, timestamp);
+		return payload;
 	}
 
 	private SyncPayload fetchLocalChanges(Key userKey, long timestamp) {
@@ -144,6 +145,10 @@ public class SyncService {
 	}
 
 	private void applyRemoteChanges(Key userKey, SyncPayload syncPayload) {
+		if (syncPayload == null) {
+			return;
+		}
+		
 		this.datastore.beginTransaction();
 		try {
 			final Entity searchIndex = getSearchIndex(userKey);
